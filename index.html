@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Code Pasting Website</title>
+</head>
+<body>
+	<h1>Code Pasting Website</h1>
+
+	<form id="access-form">
+		<label for="password">Enter Password to Access Editor:</label>
+		<input type="password" id="password" name="password">
+		<input type="submit" value="Access">
+	</form>
+
+	<div id="editor-container" style="display:none">
+		<h2>Code Editor</h2>
+		<textarea id="code-input" rows="10" cols="80"></textarea>
+		<br>
+		<button id="save-button">Save Changes</button>
+	</div>
+
+	<div id="output-container">
+		<h2>Output:</h2>
+		<pre id="output"></pre>
+	</div>
+
+	<script>
+		var password = "donkeyballsforever";
+
+		var accessForm = document.getElementById("access-form");
+		var editorContainer = document.getElementById("editor-container");
+		var codeInput = document.getElementById("code-input");
+		var output = document.getElementById("output");
+
+		accessForm.addEventListener("submit", function(event) {
+			event.preventDefault();
+			var inputPassword = document.getElementById("password").value;
+			if (inputPassword === password) {
+				accessForm.style.display = "none";
+				editorContainer.style.display = "block";
+			} else {
+				alert("Incorrect Password. Try again.");
+			}
+		});
+
+		var saveButton = document.getElementById("save-button");
+		saveButton.addEventListener("click", function(event) {
+			event.preventDefault();
+			var code = codeInput.value;
+			output.innerText = code;
+		});
+	</script>
+</body>
+</html>
